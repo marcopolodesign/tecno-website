@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import Button from '../ui/Button';
-import Container from '../ui/Container';
+import CTAButton from '../ui/CTAButton';
 import Bubbles from '../ui/Bubbles';
 import Logo from '../../assets/svg/Logo';
 import landingImg from '../../assets/landing-img.png';
@@ -67,13 +66,6 @@ const HeroSection = () => {
     };
   }, []);
 
-  const handleCtaClick = () => {
-    // Scroll to contact section or open booking modal
-    const contactSection = document.getElementById('contacto');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section 
@@ -122,18 +114,7 @@ const HeroSection = () => {
           
           {/* CTA Button */}
           <div ref={ctaRef} className="mb-12">
-            <button
-              onClick={handleCtaClick}
-              className="text-white font-medium text-lg px-12 py-4 transform hover:scale-105 transition-all duration-300 uppercase tracking-wide w-full max-w-sm font-space"
-              style={{
-                borderRadius: '160.054px',
-                border: '1.601px solid #FFF',
-                background: 'rgba(255, 255, 255, 0.10)',
-                backdropFilter: 'blur(5.300000190734863px)'
-              }}
-            >
-              PROBA UNA CLASE GRATIS
-            </button>
+            <CTAButton />
           </div>
                  
           {/* Contact Info */}

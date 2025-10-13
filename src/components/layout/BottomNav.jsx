@@ -51,7 +51,7 @@ const BottomNav = () => {
     style={{ 
         justifyContent: 'flex-start',
         borderRadius: '100px',
-        border: '1px solid #FFF',
+        border: !isScrolled ? '1px solid #FFF' : '1px solid #edeaea',
         background: 'rgba(255, 255, 255, 0.30)',
       //   backdropFilter: 'blur(250px)',
     
