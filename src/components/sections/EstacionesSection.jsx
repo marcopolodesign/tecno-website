@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CTAButton from '../ui/CTAButton';
+import banner1 from '../../assets/banner-1.jpg';
+import banner2 from '../../assets/banner-2.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +30,7 @@ const EstacionesSection = () => {
       stepNumber: "01",
       title: "Entrada en calor, core y postural",
       description: "",
-      image: "/src/assets/banner-1.jpg", // Placeholder - you can replace with actual images
+      image: banner1,
       bgColor: "linear-gradient(180deg, #FFF5E6 0%, #FFB366 100%)"
     },
     {
@@ -36,7 +38,7 @@ const EstacionesSection = () => {
       stepNumber: "02",
       title: "Metabólicos y dinámicos",
       description: "Movimientos intensos y funcionales que elevan el ritmo cardíaco y generan la energía de la sesión.",
-      image: "/src/assets/banner-2.jpg", // Placeholder - you can replace with actual images
+      image: banner2,
       bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #F4AB37 108.39%)"
     },
     {
@@ -44,15 +46,15 @@ const EstacionesSection = () => {
       stepNumber: "03",
       title: "Musculación específica I",
       description: "Fuerza focalizada en grupos musculares concretos. Mejora potencia y control.",
-      image: "/src/assets/banner-1.jpg", // Placeholder - you can replace with actual images
+      image: banner1,
       bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #F4AB37 108.39%)"
-    }, 
+    },
     {
       minutes: "21'",
       stepNumber: "04",
       title: "Musculación específica II",
       description: "Fuerza focalizada en grupos musculares concretos. Mejora potencia y control.",
-      image: "/src/assets/banner-1.jpg", // Placeholder - you can replace with actual images
+      image: banner2,
       bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #F4AB37 108.39%)"
     }
   ];

@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import banner1 from '../../assets/banner-1.jpg';
+import banner2 from '../../assets/banner-2.jpg';
+import introImg from '../../assets/intro-img.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,17 +19,17 @@ const TFExperience = () => {
       id: 1,
       title: "Rutina personalizada",
       description: "medida según días de entrenamiento elegidos",
-      image: "/src/assets/banner-1.jpg", // Woman with raised arms exercise
+      image: banner1, // Woman with raised arms exercise
       overlay: null
     },
     {
       id: 2,
       title: "5 estaciones",
       description: "Rutinas a medida según días de entrenamiento elegidos",
-      image: "/src/assets/banner-2.jpg", // Man doing barbell squat
+      image: banner2, // Man doing barbell squat
       overlay: {
         type: "trainer",
-        image: "/src/assets/banner-1.jpg", // Trainer headshot
+        image: banner1, // Trainer headshot
         position: "top-center"
       }
     },
@@ -34,14 +37,14 @@ const TFExperience = () => {
       id: 3,
       title: "Entrenamiento en circuito",
       description: "Combina ejercicios de fuerza y cardio para maximizar resultados",
-      image: "/src/assets/intro-img.jpg", // Woman in lunge pose
+      image: introImg, // Woman in lunge pose
       overlay: null
     },
     {
       id: 4,
       title: "Progreso monitoreado",
       description: "Seguimiento detallado de las mejoras en fuerza y resistencia",
-      image: "/src/assets/banner-2.jpg", // Man doing barbell squat
+      image: banner2, // Man doing barbell squat
       overlay: null
     }
   ];
