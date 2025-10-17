@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { openWhatsApp } from '../../utils/whatsapp';
 import banner1 from '../../assets/banner-1.jpg';
 import banner2 from '../../assets/banner-2.jpg';
 import introImg from '../../assets/intro-img.jpg';
@@ -189,7 +190,10 @@ const TFExperience = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <button className="bg-black text-white px-8 py-4 rounded-full font-firs font-bold text-lg hover:bg-gray-800 transition-colors duration-300">
+          <button 
+            onClick={openWhatsApp}
+            className="bg-black text-white px-8 py-4 rounded-full font-firs font-bold text-lg hover:bg-gray-800 transition-colors duration-300"
+          >
             Comenzar Ahora
           </button>
         </div>

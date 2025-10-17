@@ -76,7 +76,7 @@ const HeroSection = () => {
       {/* Left Side - Image */}
       <div 
         ref={leftImageRef}
-        className="relative min-h-[50vh] w-[90%] md:min-h-[95vh] md:w-1/2 -translate-y-12 md:translate-y-0 justify-center md:justify-start z-20 rounded-xl md:rounded-none overflow-hidden items-center md:items-start"
+        className="relative min-h-[50vh] w-full md:min-h-[95vh] md:w-1/2 -translate-y-12 md:translate-y-0 justify-center md:justify-start z-20 overflow-hidden items-center md:items-start"
       >
         {/* Background Image */}
         <div 
@@ -87,9 +87,9 @@ const HeroSection = () => {
         >
           <div className="absolute inset-0 bg-black/40"></div>
           
-          {/* Overlay Text */}
-          <div className="relative z-20 m-10 text-white md:max-w-md">
-            <h2 className="text-center md:text-left text-4xl font-semibold mb-2 leading-tight font-firs">
+          {/* Overlay Text - Only visible on desktop */}
+          <div className="hidden md:block relative z-20 m-10 text-white md:max-w-md">
+            <h2 className="text-left text-4xl font-semibold mb-2 leading-tight font-firs">
               5 boxes, 40 minutos, 1 entrenamiento completo
             </h2>
           </div>
@@ -105,12 +105,22 @@ const HeroSection = () => {
       >
         {/* Background Bubbles */}
         <Bubbles />
+        
+       
           <div className="mb-12 w-full">
             <Logo 
               variant="full"
               className="w-full h-auto relative z-20"
             />
           </div>
+
+             {/* Mobile Hero Text - Only visible on mobile */}
+             <div className="md:hidden w-full mb-8 text-center relative z-20">
+            <h1 className="text-white text-3xl sm:text-4xl font-bold leading-tight font-firs">
+              5 boxes, 40 minutos, 1 entrenamiento completo
+            </h1>
+          </div>
+
           
           {/* CTA Button */}
           <div ref={ctaRef} className="mb-12">

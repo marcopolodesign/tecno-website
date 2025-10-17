@@ -3,7 +3,7 @@ import Logo from '../../assets/svg/Logo';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 m-8 rounded-2xl relative z-30">
+    <footer id="contacto" className="bg-black text-white py-8 m-8 rounded-2xl relative z-30">
       <div className="mx-auto p-6 md:p-12">
         <div className="flex items-center justify-between space-y-8">
           

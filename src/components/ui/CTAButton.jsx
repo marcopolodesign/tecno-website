@@ -1,5 +1,6 @@
 import React from 'react';
 import { colors } from '../../utils/colors';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 const CTAButton = ({ 
   children = "PROBA UNA CLASE GRATIS",
@@ -14,11 +15,8 @@ const CTAButton = ({
     if (onClick) {
       onClick();
     } else {
-      // Default behavior: scroll to contact section
-      const contactSection = document.getElementById('contacto');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      // Default behavior: open WhatsApp
+      openWhatsApp();
     }
   };
 
