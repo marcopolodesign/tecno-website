@@ -202,7 +202,7 @@ const MethodologySection = () => {
               <div
                 key={step.number}
                 data-step={index}
-                className="relative flex items-start gap-6 md:gap-8"
+                className="relative flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-8"
               >
                 {/* Timeline Dot */}
                 <div className="relative z-10 flex-shrink-0">
@@ -217,9 +217,9 @@ const MethodologySection = () => {
                 </div>
 
                 {/* Step Content */}
-                <div className="step-content flex-1 bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                <div className="step-content flex-1 bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100 hover:shadow-2xl transition-shadow duration-300 w-full">
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-4 gap-4">
                     <div className="flex items-center gap-4">
                       <div className="text-3xl">{step.icon}</div>
                       <h3 className="text-xl md:text-2xl font-bold text-gray-900">
@@ -234,7 +234,7 @@ const MethodologySection = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-center md:text-left">
                     {step.description}
                   </p>
 

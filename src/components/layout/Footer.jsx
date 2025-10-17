@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer id="contacto" className="bg-black text-white py-8 m-8 rounded-2xl relative z-30">
       <div className="mx-auto p-6 md:p-12">
-        <div className="flex items-center justify-between space-y-8">
+        <div className="flex flex-col items-center justify-center space-y-8">
           
           {/* Social Media Icons */}
           <div className="flex space-x-4">
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex space-x-8">
+          <div className="flex flex-col items-center space-y-4">
             <a href="#" className="text-white hover:text-gray-300 transition-colors font-sans">
               Política de Privacidad
             </a>
@@ -49,7 +49,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex justify-center w-full md:mt-28 mt-12">
+        <div className="flex flex-col justify-center items-center w-full md:mt-28 mt-12">
             <Logo 
               width={'100%'} 
               height={'100%'} 
