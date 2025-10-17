@@ -17,7 +17,7 @@ function App() {
       <main className="md:p-8 p-4" >
           <HeroSection />
           <IntroSection />
-          <BannerSection />
+          {window.innerWidth >= 768 && <BannerSection />}
           <EstacionesSection />
           <TFExperience />
           <MapSection />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,9 +14,16 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e, item) => {
+    if (item.label === 'Contacto') {
+      e.preventDefault();
+      openWhatsApp();
+    }
+  };
+
   const navItems = [
     { label: 'Inicio', href: '#inicio' },
-    { label: 'Entrenamientos', href: '#entrenamientos' },
+    { label: 'Entrenamientos', href: '#estaciones' },
     { label: 'Ubicación', href: '#ubicacion' },
     { label: 'Contacto', href: '#contacto' },
   ];
@@ -49,6 +57,7 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item)}
                 className="text-white hover:text-orange-300 transition-colors duration-300 font-medium"
               >
                 {item.label}

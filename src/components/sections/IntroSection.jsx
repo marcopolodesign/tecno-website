@@ -91,7 +91,7 @@ const IntroSection = () => {
     <section 
       ref={sectionRef}
       id="entrenamientos"
-      className="min-h-screen flex items-center justify-center px-8 py-24"
+      className="min-h-screen flex items-center justify-center md:px-8 md:py-24 py-12"
     >
       <div className="max-w-5xl mx-auto w-full">
         <div className="text-center">
@@ -105,7 +105,7 @@ const IntroSection = () => {
           </div>
           
           <div ref={textRef}>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight font-firs mb-12 text-center max-w-4xl mx-auto -translate-y-10">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight font-firs mb-12 text-center max-w-4xl mx-auto md:-translate-y-10 -translate-y-6">
               En tu propio box y en 40 minutos, vivís una experiencia exclusiva, dinámica y efectiva: tecnología como evolución del rendimiento.
             </h2>
           </div>

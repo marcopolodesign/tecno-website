@@ -84,7 +84,10 @@ const BannerSection = () => {
     <section
       ref={sectionRef}
       className="relative overflow-x-hidden py-16 md:py-20 font-firs uppercase text-5xl md:text-7xl lg:text-8xl font-bol md:-mx-8 -mx-4 "
-      style={{ zIndex: 10, minHeight: '60vh' }}
+      style={{
+        zIndex: 10,
+        minHeight: window.innerWidth < 768 ? '40vh' : '60vh'
+      }}
     >
       {/* Left Image (Banner 1) */}
       <img

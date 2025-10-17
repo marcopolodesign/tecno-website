@@ -71,7 +71,7 @@ const HeroSection = () => {
     <section 
       ref={heroRef}
       id="inicio"
-      className="relative md:min-h-[95vh] flex items-center overflow-hidden rounded-xl md:rounded-4xl flex-col-reverse md:flex-row"
+      className="relative md:min-h-[95vh] flex items-center overflow-hidden md:rounded-4xl flex-col-reverse md:flex-row -mx-4 md:-mx-0 -mt-4 md:-mt-0 w-[100vw] md:w-full"
     >
       {/* Left Side - Image */}
       <div 
@@ -101,7 +101,7 @@ const HeroSection = () => {
       {/* Right Side - Content */}
       <div 
         ref={rightContentRef}
-        className="md:min-h-[95vh] md:w-1/2 flex flex-col justify-between items-center relative p-5 overflow-hidden rounded-xl md:rounded-none"
+        className="md:min-h-[95vh] md:w-1/2 flex flex-col justify-between items-center relative p-5 overflow-hidden"
       >
         {/* Background Bubbles */}
         <Bubbles />

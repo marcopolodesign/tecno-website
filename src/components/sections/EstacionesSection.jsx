@@ -198,7 +198,7 @@ const EstacionesSection = () => {
       id="estaciones"
       className="py-16 md:py-24 bg-[#F0F0F0]"
     >
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="md:max-w-7xl mx-auto md:px-8">
         <div className="relative flex flex-col justify-between">
           
           {/* Left Content */}
@@ -212,13 +212,13 @@ const EstacionesSection = () => {
             </div>
 
             {/* Paragraph */}
-            <div ref={textRef} className="mb-12 flex justify-between items-end">
-              <p className="text-lg md:text-xl text-black leading-relaxed font-firs max-w-3xl">
+            <div ref={textRef} className="mb-12 flex flex-col md:flex-row justify-between items-end">
+              <p className="text-lg md:text-xl text-black leading-relaxed font-firs md:max-w-3xl">
                 Cada bloque tiene un propósito. Juntos, crean una experiencia completa en la que trabajás tu cuerpo de forma integral. Entrenamientos efectivos, seguros y guiados por coaches expertos, respaldados por tecnología de última generación.
               </p>
 
                 {/* CTA Button - Bottom Right */}
-                <div ref={ctaRef} className="flex justify-end">
+                <div ref={ctaRef} className="flex justify-end mt-4 md:mt-0">
                     <CTAButton 
                     backgroundColor="#EC4518"
                     color="#FFF"

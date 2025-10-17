@@ -23,7 +23,7 @@ const CTAButton = ({
   return (
     <button
       onClick={handleClick}
-      className={`font-medium text-lg px-12 py-4 transform hover:scale-105 transition-all duration-300 uppercase tracking-wide w-full max-w-sm font-space ${className}`}
+      className={`whitespace-nowrap font-medium text-lg px-12 py-4 transform hover:scale-105 transition-all duration-300 uppercase tracking-wide w-full max-w-sm font-space ${className}`}
       style={{
         borderRadius: '160.054px',
         border: `1.601px solid ${borderColor}`,
