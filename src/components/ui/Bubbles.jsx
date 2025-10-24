@@ -93,7 +93,7 @@ const Bubbles = () => {
         className="absolute w-[50vw] h-[50vw] md:w-[25vw] md:h-[25vw]"
         style={{
           borderRadius: '50%',
-          background: '#F45F37',
+          background: '#222',
           filter: 'blur(55.900001525878906px)',
           bottom: '-10%',
           left: '-5%',

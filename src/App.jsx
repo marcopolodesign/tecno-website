@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
 import IntroSection from './components/sections/IntroSection';
@@ -28,6 +29,7 @@ function App() {
       <Footer onOpenContact={() => setIsContactOpen(true)} />
       <BottomNav onOpenContact={() => setIsContactOpen(true)} />
       <ContactSidecart isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <Analytics />
     </div>
   );
 }

@@ -243,9 +243,9 @@ const EstacionesSection = () => {
                 {/* CTA Button - Bottom Right */}
                 <div ref={ctaRef} className="flex justify-end mt-4 md:mt-0">
                     <CTAButton 
-                    backgroundColor="#EC4518"
-                    color="#FFF"
-                    borderColor="#EC4518"
+                    backgroundColor="#000"
+                    color="#fff"
+                    borderColor="#000"
                     className="w-auto"
                     />
                 </div>
