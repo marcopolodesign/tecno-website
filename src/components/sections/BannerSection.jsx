@@ -63,18 +63,24 @@ const BannerSection = () => {
   // Content for the first row
   const bannerText1Content = (
     <>
-      <span className="text-black"> 200 MINUTOS DE ENTRENAMIENTO. </span>
+      <span className="text-black"> 40 MINUTOS DE ENTRENAMIENTO</span>
       <span className="text-black"> • </span>
+      <span style={{ color: colors.brand }}>5</span>
+      <span className="text-black"> ESTACIONES</span>
+      <span className="text-black"> • </span>
+      <span className="text-black">4OO MOVIMIENTOS ADAPTABLES • </span>
     </>
   );
 
   // Content for the second row
   const bannerText2Content = (
     <>
-      <span className="text-black">4OO MOVIMIENTOS ADAPTABLES. </span>
       <span style={{ color: colors.brand }}>5</span>
-      <span className="text-black"> ESTACIONES. </span>
-      <span style={{ color: '#E91E63' }}>40</span>
+      <span className="text-black"> ESTACIONES</span>
+      <span className="text-black"> • </span>
+      <span className="text-black">4OO MOVIMIENTOS ADAPTABLES</span>
+      <span className="text-black"> • </span>
+      <span className="text-black">40 MINUTOS DE ENTRENAMIENTO</span>
       <span className="text-black"> • </span>
     </>
   );

@@ -4,6 +4,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CTAButton from '../ui/CTAButton';
 import banner1 from '../../assets/banner-1.jpg';
 import banner2 from '../../assets/banner-2.jpg';
+import me1 from '../../assets/m-e-1.jpg';
+import me2 from '../../assets/m-e-2.jpg';
+import cardio from '../../assets/cardio.jpg';
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +51,7 @@ const EstacionesSection = () => {
       stepNumber: "03",
       title: "Musculación específica I",
       description: "Fuerza focalizada en grupos musculares concretos. Mejora potencia y control.",
-      image: banner1,
+      image: me1,
       bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #FF8A35 108.39%)"
     },
     {
@@ -54,7 +59,7 @@ const EstacionesSection = () => {
       stepNumber: "04",
       title: "Musculación específica II",
       description: "Fuerza focalizada en grupos musculares concretos. Mejora potencia y control.",
-      image: banner2,
+      image: me2,
       bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #FF8A35 108.39%)"
     },
     {
@@ -62,7 +67,7 @@ const EstacionesSection = () => {
       stepNumber: "05",
       title: "Propiocepción, coordinación o cardio",
       description: "Estabilidad, equilibrio y coordinación. Según el día, también ejercicios cardiovasculares.",
-      image: banner2,
+      image: cardio,
       bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #FF3124 108.39%)"
     }, 
     {

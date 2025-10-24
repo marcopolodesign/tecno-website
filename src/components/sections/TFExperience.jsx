@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { openWhatsApp } from '../../utils/whatsapp';
-import banner1 from '../../assets/banner-1.jpg';
+// import banner1 from '../../assets/banner-1.jpg';
 import banner2 from '../../assets/banner-2.jpg';
 import introImg from '../../assets/intro-img.jpg';
+import tf1 from '../../assets/tf-1.jpg';
+import mockup from '../../assets/mock.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +22,7 @@ const TFExperience = () => {
       id: 1,
       title: "Rutina personalizada",
       description: "medida según días de entrenamiento elegidos",
-      image: banner1, // Woman with raised arms exercise
+      image: tf1, // Woman with raised arms exercise
       overlay: null
     },
     {
@@ -41,7 +43,7 @@ const TFExperience = () => {
       id: 4,
       title: "Progreso monitoreado",
       description: "Seguimiento detallado de las mejoras en fuerza y resistencia",
-      image: banner2, // Man doing barbell squat
+      image: mockup, // Man doing barbell squat
       overlay: null
     }
   ];
