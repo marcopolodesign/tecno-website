@@ -63,49 +63,49 @@ const Bubbles = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Bubble 1 */}
+      {/* Bubble 1 - Dark Gray */}
       <div 
         ref={bubble1Ref}
         className="absolute w-[60vw] h-[60vw] md:w-[35vw] md:h-[35vw]"
         style={{
           borderRadius: '50%',
-          background: '#EC4518',
+          background: '#1a1a1a',
           filter: 'blur(55.900001525878906px)',
           top: '0%',
           left: '-10%',
         }}
       />
-      {/* Bubble 2 */}
+      {/* Bubble 2 - Orange Accent */}
       <div 
         ref={bubble2Ref}
         className="absolute w-[60vw] h-[60vw] md:w-[35vw] md:h-[35vw]"
         style={{
           borderRadius: '50%',
-          background: '#F45F37',
+          background: '#FF6B35',
           filter: 'blur(55.900001525878906px)',
           top: '-25%',
           right: '-7%',
         }}
       />
-      {/* Bubble 3 */}
+      {/* Bubble 3 - Charcoal */}
       <div 
         ref={bubble3Ref}
         className="absolute w-[50vw] h-[50vw] md:w-[25vw] md:h-[25vw]"
         style={{
           borderRadius: '50%',
-          background: '#F4AB37',
+          background: '#2d2d2d',
           filter: 'blur(55.900001525878906px)',
           bottom: '-10%',
           left: '-5%',
         }}
       />
-      {/* Bubble 4 */}
+      {/* Bubble 4 - Deep Black with Orange tint */}
       <div 
         ref={bubble4Ref}
         className="absolute w-[70vw] h-[70vw] md:w-[45vw] md:h-[45vw]"
         style={{
           borderRadius: '50%',
-          background: '#F45F37',
+          background: '#0f0f0f',
           filter: 'blur(55.900001525878906px)',
           bottom: '-5%',
           right: '-20%',

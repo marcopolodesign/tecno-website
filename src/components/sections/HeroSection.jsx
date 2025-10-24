@@ -5,7 +5,7 @@ import Bubbles from '../ui/Bubbles';
 import Logo from '../../assets/svg/Logo';
 import landingImg from '../../assets/landing-img.png';
 
-const HeroSection = () => {
+const HeroSection = ({ onOpenContact }) => {
   const heroRef = useRef(null);
   const leftImageRef = useRef(null);
   const rightContentRef = useRef(null);
@@ -101,7 +101,7 @@ const HeroSection = () => {
       {/* Right Side - Content */}
       <div 
         ref={rightContentRef}
-        className="md:min-h-[95vh] md:w-1/2 flex flex-col justify-between items-center relative p-5 overflow-hidden"
+        className="md:min-h-[95vh] md:w-1/2 flex flex-col justify-between items-center relative p-5 overflow-hidden bg-black/80"
       >
         {/* Background Bubbles */}
         <Bubbles />
@@ -124,7 +124,7 @@ const HeroSection = () => {
           
           {/* CTA Button */}
           <div ref={ctaRef} className="mb-12">
-            <CTAButton />
+            <CTAButton onClick={onOpenContact} />
           </div>
                  
           {/* Contact Info */}

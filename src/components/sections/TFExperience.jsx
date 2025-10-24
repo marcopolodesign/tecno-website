@@ -28,11 +28,7 @@ const TFExperience = () => {
       title: "5 estaciones",
       description: "Rutinas a medida según días de entrenamiento elegidos",
       image: banner2, // Man doing barbell squat
-      overlay: {
-        type: "trainer",
-        image: banner1, // Trainer headshot
-        position: "top-center"
-      }
+      overlay:  null
     },
     {
       id: 3,
@@ -126,7 +122,7 @@ const TFExperience = () => {
     <section 
       ref={sectionRef}
       id="tf-experience"
-      className="py-16 md:py-24 bg-[#F0F0F0]"
+      className="py-16 md:py-24 bg-[#F0F0F0] mt-16 "
     >
       <div className="max-w-7xl mx-auto px-8">
         {/* Title */}

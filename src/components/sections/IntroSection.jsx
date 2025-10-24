@@ -106,7 +106,7 @@ const IntroSection = () => {
           
           <div ref={textRef}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight font-firs mb-12 text-center max-w-4xl mx-auto md:-translate-y-10 -translate-y-6">
-              En tu propio box y en 40 minutos, vivís una experiencia exclusiva, dinámica y efectiva: tecnología como evolución del rendimiento.
+            Cada box, un desafío diseñado para vos. 40 minutos para que vivas una experiencia exclusiva, dinámica y efectiva, potenciada por la tecnología que impulsa tu rendimiento y tu evolución.
             </h2>
           </div>
           

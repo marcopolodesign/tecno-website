@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { openWhatsApp } from '../../utils/whatsapp';
 
-const BottomNav = () => {
+const BottomNav = ({ onOpenContact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef(null);
 
@@ -44,7 +44,11 @@ const BottomNav = () => {
   const handleNavClick = (e, item) => {
     if (item.label === 'Contacto') {
       e.preventDefault();
-      openWhatsApp();
+      if (onOpenContact) {
+        onOpenContact();
+      } else {
+        openWhatsApp();
+      }
     }
   };
 

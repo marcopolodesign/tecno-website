@@ -25,21 +25,21 @@ const BannerSection = () => {
       }
 
       const ctx = gsap.context(() => {
-        // First row animation - right to left (continuous)
+        // First row animation - right to left (continuous, faster)
         if (firstRowRef.current) {
           gsap.to(firstRowRef.current, {
             x: '-33.333%',
-            duration: 75,
+            duration: 35,
             ease: 'none',
             repeat: -1,
           });
         }
 
-        // Second row animation - left to right (continuous)
+        // Second row animation - left to right (continuous, slower)
         if (secondRowRef.current) {
           gsap.to(secondRowRef.current, {
             x: '-33.333%',
-            duration: 75,
+            duration: 50,
             ease: 'none',
             repeat: -1,
           });
@@ -63,8 +63,7 @@ const BannerSection = () => {
   // Content for the first row
   const bannerText1Content = (
     <>
-      <span className="text-black">MINUTOS DE ENTRENAMIENTO. </span>
-      <span style={{ color: '#EC4518' }}>200</span>
+      <span className="text-black"> 200 MINUTOS DE ENTRENAMIENTO. </span>
       <span className="text-black"> • </span>
     </>
   );
@@ -90,20 +89,20 @@ const BannerSection = () => {
       }}
     >
       {/* Left Image (Banner 1) */}
-      <img
+      {/* <img
         src={banner1}
         alt="Training intensity"
         className="absolute top-1/2 left-0 -translate-y-1/2 w-[200px] md:w-[300px] lg:w-[300px] h-auto object-cover rounded-lg"
         style={{ zIndex: 12, transform: 'translateY(-40%) translateX(30%)' }}
-      />
+      /> */}
 
       {/* Right Image (Banner 2) */}
-      <img
+      {/* <img
         src={banner2}
         alt="Woman training"
         className="absolute top-1/2 right-0 -translate-y-1/2 w-[200px] md:w-[300px] lg:w-[400px] h-auto object-cover rounded-lg"
         style={{ zIndex: 12, transform: 'translateY(-30%) translateX(-25%)' }}
-      />
+      /> */}
 
       {/* Text Container */}
       <div className="relative w-full overflow-hidden">

@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../assets/svg/Logo';
 
-const Footer = () => {
+const Footer = ({ onOpenContact }) => {
   return (
     <footer id="contacto" className="bg-black text-white py-8 m-8 rounded-2xl relative z-30">
       <div className="mx-auto p-6 md:p-12">
@@ -43,9 +43,9 @@ const Footer = () => {
             <a href="#" className="text-white hover:text-gray-300 transition-colors font-sans">
               Política de Privacidad
             </a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors font-sans">
+            <button onClick={onOpenContact} className="text-white hover:text-gray-300 transition-colors font-sans">
               Contactanos
-            </a>
+            </button>
           </div>
         </div>
 

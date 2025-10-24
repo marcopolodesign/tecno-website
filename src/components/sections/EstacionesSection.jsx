@@ -18,7 +18,7 @@ const EstacionesSection = () => {
   // Workout steps data
   const workoutSteps = [
     {
-      minutes: "10'",
+      minutes: "0'",
       stepNumber: null,
       title: "Entrada en calor",
       description: "Estabilidad, equilibrio y coordinación. Según el día, también ejercicios cardiovasculares.",
@@ -31,7 +31,7 @@ const EstacionesSection = () => {
       title: "Entrada en calor, core y postural",
       description: "",
       image: banner1,
-      bgColor: "linear-gradient(180deg, #FFF5E6 0%, #FFB366 100%)"
+      bgColor: "linear-gradient(180deg, #F0F0F0 0%, #FFF5E6 100%)"
     },
     {
       minutes: "14'",
@@ -47,16 +47,32 @@ const EstacionesSection = () => {
       title: "Musculación específica I",
       description: "Fuerza focalizada en grupos musculares concretos. Mejora potencia y control.",
       image: banner1,
-      bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #F4AB37 108.39%)"
+      bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #FF8A35 108.39%)"
     },
     {
-      minutes: "21'",
+      minutes: "28'",
       stepNumber: "04",
       title: "Musculación específica II",
       description: "Fuerza focalizada en grupos musculares concretos. Mejora potencia y control.",
       image: banner2,
-      bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #F4AB37 108.39%)"
-    }
+      bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #FF8A35 108.39%)"
+    },
+    {
+      minutes: "32'",
+      stepNumber: "05",
+      title: "Propiocepción, coordinación o cardio",
+      description: "Estabilidad, equilibrio y coordinación. Según el día, también ejercicios cardiovasculares.",
+      image: banner2,
+      bgColor: "linear-gradient(180deg, #F0F0F0 26.1%, #FFDFCF 67.77%, #FF3124 108.39%)"
+    }, 
+    {
+      minutes: "40'",
+      stepNumber: null,
+      title: "Elongación",
+      description: "Movilidad y flexibilidad para cerrar la sesión. Relajá la musculatura y recuperá el cuerpo para potenciar tu próxima experiencia.",
+      image: null,
+      bgColor: "linear-gradient(90deg, #F0F0F0 -4.71%, #96D9FB 60.07%, #376DF4 111.04%)"
+    },
   ];
 
   // Check if desktop on mount and resize
@@ -150,23 +166,25 @@ const EstacionesSection = () => {
               
               // Wrap the card
               cardRef.parentNode.insertBefore(wrapper, cardRef);
-              wrapper.appendChild(cardRef);
               
-              // Calculate target values (like Oaksun: -125 + 60 * index)
-              const targetY = -125 + (60 * index); // -125px, -65px, -5px, 55px
-              const targetScale = 0.94 + (0.03 * index); // 0.94, 0.97, 1.00, 1.03
+              wrapper.appendChild(cardRef);
+              wrapper.style.marginBottom = `${index * 30}px`;
+
+              // Calculate target values with much larger spacing between cards
+              // const targetY = -300 + (20 * index); // -300px, -100px, 100px, 300px (much larger gaps)
+              // const targetScale = 0.94 + (0.03 * index); // 0.94, 0.97, 1.00, 1.03
               
               // Apply Oaksun-style animation
               gsap.to(cardRef, {
-                y: targetY,
-                scale: targetScale,
+                // y: targetY,
+                // scale: targetScale,
                 rotationX: 0,
                 transformOrigin: "center center",
                 ease: "none",
                 scrollTrigger: {
                   trigger: wrapper,
-                  start: "top 180px", // Like Oaksun: "top 180"
-                  end: "top 180px",   // Same start and end for pinning
+                  start: `top ${50 + index * 50}px`, // cada tarjeta se frena 30px después de la anterior
+                  end: `top ${50 + index * 50}px`, // cada tarjeta se frena 30px después de la anterior
                   endTrigger: cardRefs.current[cardRefs.current.length - 1], // Last card
                   scrub: 1,
                   pin: true,
@@ -252,7 +270,7 @@ const EstacionesSection = () => {
                     
                     {/* Step Card */}
                     <div 
-                      className="w-full rounded-2xl border border-black overflow-hidden transition-all duration-300 flex-1"
+                      className={`w-full rounded-2xl overflow-hidden transition-all duration-300 flex-1 ${index === 0 ? '' : 'border border-black'}`}
                       style={{
                         background: step.bgColor,
                       }}
@@ -275,7 +293,7 @@ const EstacionesSection = () => {
                           
                           {/* Description */}
                           {step.description && (
-                            <p className="text-base md:text-lg text-black leading-relaxed font-firs font-light">
+                            <p className="md:text-lg text-black leading-relaxed font-firs font-light">
                               {step.description}
                             </p>
                           )}
