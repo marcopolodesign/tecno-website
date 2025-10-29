@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { colors } from '../../utils/colors';
-import banner1 from '../../assets/banner-1.jpg';
-import banner2 from '../../assets/banner-2.jpg';
+
 
 const BannerSection = () => {
   const sectionRef = useRef(null);

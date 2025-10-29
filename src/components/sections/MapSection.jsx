@@ -88,9 +88,9 @@ const MapSection = () => {
     <section 
       ref={sectionRef}
       id="ubicacion"
-      className="py-16 md:py-24 bg-[#F0F0F0]"
+      className="sm:py-16 py-8 md:py-24 bg-[#F0F0F0]"
     >
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="msm:ax-w-7xl mx-auto sm:px-8">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Map Container */}
           <div 
@@ -116,7 +116,7 @@ const MapSection = () => {
           >
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-black font-firs leading-tight">
-              Costa Rica 5823, C1414 BTI, Ciudad Autónoma de Buenos Aires
+              Costa Rica 5823, Palermo, Ciudad Autónoma de Buenos Aires
               </h2>
               <p className="text-xl md:text-2xl text-black font-firs">
               +54 9 11 3455 0000
