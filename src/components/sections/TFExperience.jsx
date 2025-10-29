@@ -27,7 +27,7 @@ const TFExperience = () => {
     },
     {
       id: 2,
-      title: "5 estaciones",
+      title: "5 boxes",
       description: "Rutinas a medida según días de entrenamiento elegidos",
       image: banner2, // Man doing barbell squat
       overlay:  null
@@ -124,9 +124,9 @@ const TFExperience = () => {
     <section 
       ref={sectionRef}
       id="tf-experience"
-      className="py-16 md:py-24 bg-[#F0F0F0] mt-16 "
+      className="sm:py-16 py-8 md:py-24 bg-[#F0F0F0] sm:mt-16 mt-8 "
     >
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="sm:max-w-7xl mx-auto sm:px-8">
         {/* Title */}
         <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-none font-firs">
@@ -143,10 +143,10 @@ const TFExperience = () => {
             <div
               key={card.id}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="relative group cursor-pointer"
+              className="relative"
             >
               {/* Card */}
-              <div className="relative h-96 rounded-2xl border border-black overflow-hidden transition-all duration-300 group-hover:scale-105">
+              <div className="relative h-96 rounded-2xl overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                   <img

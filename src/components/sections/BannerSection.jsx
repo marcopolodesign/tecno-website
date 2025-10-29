@@ -29,7 +29,7 @@ const BannerSection = () => {
         if (firstRowRef.current) {
           gsap.to(firstRowRef.current, {
             x: '-33.333%',
-            duration: 35,
+            duration: 20,
             ease: 'none',
             repeat: -1,
           });
@@ -39,7 +39,7 @@ const BannerSection = () => {
         if (secondRowRef.current) {
           gsap.to(secondRowRef.current, {
             x: '-33.333%',
-            duration: 50,
+            duration: 30,
             ease: 'none',
             repeat: -1,
           });

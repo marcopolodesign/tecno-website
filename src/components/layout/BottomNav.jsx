@@ -54,7 +54,7 @@ const BottomNav = ({ onOpenContact }) => {
 
   const navItems = [
     { label: 'Inicio', href: '#inicio' },
-    { label: 'Entrenamientos', href: '#estaciones' },
+    { label: 'Entrenamientos', href: '#boxes' },
     { label: 'Ubicación', href: '#ubicacion' },
     { label: 'Contacto', href: '#contacto' },
   ];

@@ -119,7 +119,7 @@ const MapSection = () => {
               Costa Rica 5823, C1414 BTI, Ciudad Autónoma de Buenos Aires
               </h2>
               <p className="text-xl md:text-2xl text-black font-firs">
-              +34 683 27 26 56
+              +54 9 11 3455 0000
               </p>
             </div>
             

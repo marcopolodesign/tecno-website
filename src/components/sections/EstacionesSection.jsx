@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CTAButton from '../ui/CTAButton';
@@ -18,7 +18,7 @@ const EstacionesSection = () => {
   const textRef = useRef(null);
   const ctaRef = useRef(null);
   const cardRefs = useRef([]);
-  const [isDesktop, setIsDesktop] = useState(false);
+  // const [isDesktop, setIsDesktop] = useState(false);
 
   // Workout steps data
   const workoutSteps = [
@@ -83,7 +83,7 @@ const EstacionesSection = () => {
   // Check if desktop on mount and resize
   useEffect(() => {
     const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768);
+      // setIsDesktop(window.innerWidth >= 768);
     };
     
     checkDesktop();
@@ -154,7 +154,7 @@ const EstacionesSection = () => {
         }
 
         // Oaksun-style implementation with pinning and proper transforms
-        if (isDesktop && cardRefs.current.length > 0) {
+        if (cardRefs.current.length > 0) {
           // Set up cards with proper 3D properties (like Oaksun)
           gsap.set(cardRefs.current, {
             force3D: true,
@@ -213,12 +213,12 @@ const EstacionesSection = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [isDesktop, workoutSteps.length]);
+  }, [workoutSteps.length]);
 
   return (
     <section 
       ref={sectionRef}
-      id="estaciones"
+      id="boxes"
       className="py-16 md:py-24 bg-[#F0F0F0]"
     >
       <div className="md:max-w-7xl mx-auto md:px-8">
@@ -235,7 +235,7 @@ const EstacionesSection = () => {
             </div>
 
             {/* Paragraph */}
-            <div ref={textRef} className="mb-12 flex flex-col md:flex-row justify-between items-end">
+            <div ref={textRef} className="mb-12 flex flex-col md:flex-row justify-between items-start sm:items-end">
               <p className="text-lg md:text-xl text-black leading-relaxed font-firs md:max-w-3xl">
                 Cada bloque tiene un propósito. Juntos, crean una experiencia completa en la que trabajás tu cuerpo de forma integral. Entrenamientos efectivos, seguros y guiados por coaches expertos, respaldados por tecnología de última generación.
               </p>
