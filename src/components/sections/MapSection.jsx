@@ -119,7 +119,7 @@ const MapSection = () => {
               Costa Rica 5823, Palermo, Ciudad Autónoma de Buenos Aires
               </h2>
               <p className="text-xl md:text-2xl text-black font-firs">
-              +54 9 11 3455 0000
+              +54 9 11 2297-7747
               </p>
             </div>
             

@@ -414,7 +414,7 @@ const ContactSidecart = ({ isOpen, onClose }) => {
                   onChange={(e) => handleFieldChange('phone', e.target.value)}
                   onBlur={(e) => handleFieldBlur('phone', e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
-                  placeholder="+54 11 1234-5678"
+                  placeholder="+54 9 11 2297-7747"
                 />
               </div>
 

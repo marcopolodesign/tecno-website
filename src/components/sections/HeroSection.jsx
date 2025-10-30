@@ -129,7 +129,7 @@ const HeroSection = ({ onOpenContact }) => {
                  
           {/* Contact Info */}
           <div className="space-y-3 text-base md:text-lg w-full relative z-20 opacity-0 md:opacity-100">
-            <p className="text-lg text-white text-right font-space">+54 9 11 3455 0000</p>
+            <p className="text-lg text-white text-right font-space">+54 9 11 2297-7747</p>
             <p className="text-lg text-white text-right font-space uppercase">Costa Rica 3060, Buenos Aires</p>
         </div>
       </div>
