@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { openWhatsApp } from '../../utils/whatsapp';
+import Logo from '../../assets/svg/Logo';
 
 const BottomNav = ({ onOpenContact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,20 +72,30 @@ const BottomNav = ({ onOpenContact }) => {
     >
       <nav 
         ref={navRef}
-        className="flex space-x-4 md:space-x-8 px-4 md:px-8 max-w-fit"
+        className="flex items-center space-x-4 md:space-x-8 px-4 md:px-8 max-w-fit"
       >
-        {navItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            onClick={(e) => handleNavClick(e, item)}
-            className="transition-colors duration-300 font-medium text-sm md:text-base"
-            style={{
-              color: isScrolled ? '#585858' : '#fff',
-            }}
-          >
-            {item.label}
-          </a>
+        {navItems.map((item, index) => (
+          <React.Fragment key={item.label}>
+            <a
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item)}
+              className="transition-colors duration-300 font-medium text-sm md:text-base"
+              style={{
+                color: isScrolled ? '#585858' : '#fff',
+              }}
+            >
+              {item.label}
+            </a>
+            {index === 1 && (
+              <Logo 
+                variant="icon" 
+                width={32} 
+                height={32}
+                fill={isScrolled ? '#585858' : '#fff'}
+                className="transition-colors duration-300"
+              />
+            )}
+          </React.Fragment>
         ))}
       </nav>
     </div>
