@@ -5,7 +5,7 @@ import CTAButton from '../ui/CTAButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MapSection = () => {
+const MapSection = ({ onOpenContact }) => {
   const sectionRef = useRef(null);
   const mapRef = useRef(null);
   const contentRef = useRef(null);
@@ -128,6 +128,7 @@ const MapSection = () => {
                 backgroundColor="#F45F37" 
                 color="#000"
                 className="w-full max-w-sm"
+                onClick={onOpenContact}
               />
             </div>
           </div>

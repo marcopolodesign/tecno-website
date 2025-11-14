@@ -1,6 +1,5 @@
 import React from 'react';
 import { colors } from '../../utils/colors';
-import { openWhatsApp } from '../../utils/whatsapp';
 
 const CTAButton = ({ 
   children = "PROBA UNA CLASE GRATIS",
@@ -14,10 +13,8 @@ const CTAButton = ({
   const handleClick = () => {
     if (onClick) {
       onClick();
-    } else {
-      // Default behavior: open WhatsApp
-      openWhatsApp();
     }
+    // If no onClick provided, it should be passed from parent (onOpenContact)
   };
 
   return (

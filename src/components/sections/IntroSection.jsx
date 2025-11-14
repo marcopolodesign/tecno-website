@@ -7,7 +7,7 @@ import introImg from '../../assets/intro-img.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const IntroSection = () => {
+const IntroSection = ({ onOpenContact }) => {
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
   const textRef = useRef(null);
@@ -111,7 +111,7 @@ const IntroSection = () => {
           </div>
           
           <div ref={ctaRef} className="flex justify-center">
-            <CTAButton backgroundColor={colors.brand} color="#000" />
+            <CTAButton backgroundColor={colors.brand} color="#000" onClick={onOpenContact} />
           </div>
         </div>
       </div>

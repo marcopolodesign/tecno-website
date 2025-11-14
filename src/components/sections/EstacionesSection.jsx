@@ -12,7 +12,7 @@ import cardio from '../../assets/cardio.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const EstacionesSection = () => {
+const EstacionesSection = ({ onOpenContact }) => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const textRef = useRef(null);
@@ -161,6 +161,9 @@ const EstacionesSection = () => {
             backfaceVisibility: "hidden"
           });
           
+          // Store wrappers for later use
+          const wrappers = [];
+          
           // Create wrapper elements for each card (like Oaksun's card-wrapper)
           cardRefs.current.forEach((cardRef, index) => {
             if (cardRef) {
@@ -174,6 +177,7 @@ const EstacionesSection = () => {
               
               wrapper.appendChild(cardRef);
               wrapper.style.marginBottom = `${index * 30}px`;
+              wrappers.push(wrapper);
 
               // Calculate target values with much larger spacing between cards
               // const targetY = -300 + (20 * index); // -300px, -100px, 100px, 300px (much larger gaps)
@@ -201,6 +205,48 @@ const EstacionesSection = () => {
               });
             }
           });
+
+          // Blur animation when last card passes 70% of viewport
+          const lastCardIndex = cardRefs.current.length - 1;
+          const lastCard = cardRefs.current[lastCardIndex];
+          const lastCardWrapper = wrappers[lastCardIndex];
+          const allCardsExceptLast = cardRefs.current.slice(0, lastCardIndex);
+
+          if (lastCard && lastCardWrapper && allCardsExceptLast.length > 0) {
+            // Create initial state for all cards except last
+            gsap.set(allCardsExceptLast, {
+              filter: 'blur(0px)',
+              y: 0,
+              opacity: 1
+            });
+
+            // Create ScrollTrigger to observe when last card passes 70% of viewport
+            ScrollTrigger.create({
+              trigger: lastCardWrapper,
+              start: 'top 70%', // When top of last card wrapper reaches 70% of viewport
+              onEnter: () => {
+                // When scrolling down past 70% - apply blur effect
+                gsap.to(allCardsExceptLast, {
+                  filter: 'blur(20px)',
+                  y: -20,
+                  opacity: 0,
+                  duration: 0.8,
+                  ease: 'power2.inOut'
+                });
+              },
+              onLeaveBack: () => {
+                // When scrolling up before reaching 70% - revert blur
+                // This only fires when scrolling up BEFORE the trigger point
+                gsap.to(allCardsExceptLast, {
+                  filter: 'blur(0px)',
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.6,
+                  ease: 'power2.inOut'
+                });
+              }
+            });
+          }
         }
 
       }, sectionRef);
@@ -247,6 +293,7 @@ const EstacionesSection = () => {
                     color="#fff"
                     borderColor="#000"
                     className="w-auto"
+                    onClick={onOpenContact}
                     />
                 </div>
              </div>

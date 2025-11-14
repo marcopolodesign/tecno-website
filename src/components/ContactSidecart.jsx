@@ -17,6 +17,13 @@ const ContactSidecart = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [emailError, setEmailError] = useState('')
+  const [utmParams, setUtmParams] = useState({
+    utmSource: '',
+    utmMedium: '',
+    utmCampaign: '',
+    utmTerm: '',
+    utmContent: ''
+  })
 
   const sidecartRef = useRef(null)
   const backdropRef = useRef(null)
@@ -50,6 +57,30 @@ const ContactSidecart = ({ isOpen, onClose }) => {
     }
   }, [isOpen])
 
+  // Capture UTM parameters from URL
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const utm = {
+      utmSource: urlParams.get('utm_source') || '',
+      utmMedium: urlParams.get('utm_medium') || '',
+      utmCampaign: urlParams.get('utm_campaign') || '',
+      utmTerm: urlParams.get('utm_term') || '',
+      utmContent: urlParams.get('utm_content') || ''
+    }
+    setUtmParams(utm)
+    
+    // Also save to localStorage for persistence
+    if (Object.values(utm).some(v => v)) {
+      localStorage.setItem('utmParams', JSON.stringify(utm))
+    } else {
+      // Try to load from localStorage if not in URL
+      const savedUtm = localStorage.getItem('utmParams')
+      if (savedUtm) {
+        setUtmParams(JSON.parse(savedUtm))
+      }
+    }
+  }, [])
+
   // Load from localStorage on mount
   useEffect(() => {
     const savedData = localStorage.getItem('contactFormData')
@@ -81,7 +112,8 @@ const ContactSidecart = ({ isOpen, onClose }) => {
         notes: data.notes || '',
         source: 'website',
         capturedAt: new Date().toISOString(),
-        convertedToLead: false
+        convertedToLead: false,
+        ...utmParams
       }
 
       // Only include trainingGoal if it has a value
@@ -184,7 +216,8 @@ const ContactSidecart = ({ isOpen, onClose }) => {
             status: 'nuevo',
             submittedAt: new Date().toISOString(),
             convertedToUser: false,
-            prospect: prospectId || null
+            prospect: prospectId || null,
+            ...utmParams
           }
         })
       })
