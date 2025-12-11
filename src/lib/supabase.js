@@ -1,0 +1,15 @@
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://buntxbgjixlksffbscle.supabase.co'
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1bnR4YmdqaXhsa3NmZmJzY2xlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0MDc0MzQsImV4cCI6MjA4MDk4MzQzNH0.XSiJbmW0eADd5_1X7dCQyz37srxZB-caukSipMUEyes'
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false,
+    detectSessionInUrl: false
+  }
+})
+
+export default supabase
+

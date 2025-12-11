@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:1337/api'
-const API_TOKEN = import.meta.env.VITE_STRAPI_API_TOKEN
+import { supabase } from '../lib/supabase'
 
 const ContactSidecart = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -105,41 +103,42 @@ const ContactSidecart = ({ isOpen, onClose }) => {
   const createProspect = async (data) => {
     try {
       const prospectData = {
-        firstName: data.firstName || '',
-        lastName: data.lastName || '',
+        first_name: data.firstName || '',
+        last_name: data.lastName || '',
         email: data.email,
         phone: data.phone || '',
         notes: data.notes || '',
         source: 'website',
-        capturedAt: new Date().toISOString(),
-        convertedToLead: false,
-        ...utmParams
+        captured_at: new Date().toISOString(),
+        converted_to_lead: false,
+        utm_source: utmParams.utmSource || null,
+        utm_medium: utmParams.utmMedium || null,
+        utm_campaign: utmParams.utmCampaign || null,
+        utm_term: utmParams.utmTerm || null,
+        utm_content: utmParams.utmContent || null
       }
 
-      // Only include trainingGoal if it has a value
+      // Only include training_goal if it has a value
       if (data.trainingGoal) {
-        prospectData.trainingGoal = data.trainingGoal
+        prospectData.training_goal = data.trainingGoal
       }
 
-      const response = await fetch(`${API_BASE_URL}/prospects`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_TOKEN}`
-        },
-        body: JSON.stringify({
-          data: prospectData
-        })
-      })
+      const { data: result, error } = await supabase
+        .from('prospects')
+        .insert([prospectData])
+        .select()
+        .single()
 
-      if (response.ok) {
-        const result = await response.json()
-        const newProspectId = result.data.documentId
-        setProspectId(newProspectId)
-        localStorage.setItem('prospectId', newProspectId)
-        console.log('✅ Prospect created:', newProspectId)
-        return newProspectId
+      if (error) {
+        console.error('Error creating prospect:', error)
+        return null
       }
+
+      const newProspectId = result.id
+      setProspectId(newProspectId)
+      localStorage.setItem('prospectId', newProspectId)
+      console.log('✅ Prospect created:', newProspectId)
+      return newProspectId
     } catch (error) {
       console.error('Error creating prospect:', error)
     }
@@ -147,13 +146,14 @@ const ContactSidecart = ({ isOpen, onClose }) => {
   }
 
   // Update Prospect
-  const updateProspect = async (prospectDocId, data) => {
+  const updateProspect = async (prospectId, data) => {
     try {
       const updateData = {
-        firstName: data.firstName || '',
-        lastName: data.lastName || '',
+        first_name: data.firstName || '',
+        last_name: data.lastName || '',
         phone: data.phone || '',
-        notes: data.notes || ''
+        notes: data.notes || '',
+        updated_at: new Date().toISOString()
       }
 
       // Include email if it's valid (allow email correction)
@@ -161,36 +161,29 @@ const ContactSidecart = ({ isOpen, onClose }) => {
         updateData.email = data.email
       }
 
-      // Only include trainingGoal if it has a value
+      // Only include training_goal if it has a value
       if (data.trainingGoal) {
-        updateData.trainingGoal = data.trainingGoal
+        updateData.training_goal = data.trainingGoal
       }
 
-      const response = await fetch(`${API_BASE_URL}/prospects/${prospectDocId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_TOKEN}`
-        },
-        body: JSON.stringify({
-          data: updateData
-        })
-      })
+      const { error } = await supabase
+        .from('prospects')
+        .update(updateData)
+        .eq('id', prospectId)
 
-      if (!response.ok) {
-        const errorData = await response.json()
-        console.error('Error updating prospect:', errorData)
+      if (error) {
+        console.error('Error updating prospect:', error)
         
         // Si el error es por email duplicado, informar al usuario
-        if (errorData.error?.message?.includes('email')) {
+        if (error.message?.includes('email')) {
           console.warn('⚠️ Email ya existe, creando nuevo prospect...')
           // Intentar crear un nuevo prospect
           return await createProspect(data)
         }
-        throw new Error('Failed to update prospect')
+        throw error
       }
       
-      console.log('✅ Prospect updated:', prospectDocId)
+      console.log('✅ Prospect updated:', prospectId)
     } catch (error) {
       console.error('Error updating prospect:', error)
     }
@@ -199,50 +192,44 @@ const ContactSidecart = ({ isOpen, onClose }) => {
   // Create Lead
   const createLead = async (data) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/leads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_TOKEN}`
-        },
-        body: JSON.stringify({
-          data: {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            phone: data.phone,
-            trainingGoal: data.trainingGoal,
-            notes: data.notes || '',
-            status: 'nuevo',
-            submittedAt: new Date().toISOString(),
-            convertedToUser: false,
-            prospect: prospectId || null,
-            ...utmParams
-          }
-        })
-      })
-
-      if (response.ok) {
-        console.log('✅ Lead created')
-        
-        // Update prospect if exists
-        if (prospectId) {
-          await fetch(`${API_BASE_URL}/prospects/${prospectId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${API_TOKEN}`
-            },
-            body: JSON.stringify({
-              data: {
-                convertedToLead: true
-              }
-            })
-          })
-        }
-        
-        return true
+      const leadData = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        training_goal: data.trainingGoal,
+        notes: data.notes || '',
+        status: 'nuevo',
+        submitted_at: new Date().toISOString(),
+        converted_to_user: false,
+        prospect_id: prospectId || null,
+        utm_source: utmParams.utmSource || null,
+        utm_medium: utmParams.utmMedium || null,
+        utm_campaign: utmParams.utmCampaign || null,
+        utm_term: utmParams.utmTerm || null,
+        utm_content: utmParams.utmContent || null
       }
+
+      const { error } = await supabase
+        .from('leads')
+        .insert([leadData])
+
+      if (error) {
+        console.error('Error creating lead:', error)
+        return false
+      }
+
+      console.log('✅ Lead created')
+      
+      // Update prospect if exists
+      if (prospectId) {
+        await supabase
+          .from('prospects')
+          .update({ converted_to_lead: true })
+          .eq('id', prospectId)
+      }
+      
+      return true
     } catch (error) {
       console.error('Error creating lead:', error)
     }
