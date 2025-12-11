@@ -1,0 +1,33 @@
+# TecnoFit Project Rules
+
+## Tech Stack
+- Frontend: React + Vite + Tailwind CSS
+- Backend: Supabase (PostgreSQL + Auth)
+- Animations: GSAP (NOT framer-motion)
+- Admin Panel: React + Supabase
+- Deployment: Vercel
+
+## Always Check
+- Tailwind docs: https://tailwindcss.com/docs/installation/using-vite
+- Use GSAP for animations, never framer-motion
+- Check Figma MCP if design links are provided
+
+## Database Schema
+- `prospects`: Website form submissions
+- `leads`: Converted prospects
+- `users`: Active customers/members
+- `sellers`: Staff (front_desk, admin, super_admin) with auth_user_id
+- `coaches`: Trainers with auth_user_id, specializations, certifications
+- `seller_leads`: Assignment tracking
+
+## Authentication
+- Supabase Auth for sellers and coaches
+- Login checks sellers table first, then coaches table
+- Regular users (customers) are NOT authenticated
+- Admin credentials: admin@tecnofit.com / Admin123!
+
+## Project Structure
+- `/website/tecno-website`: Public website
+- `/website/admin`: Admin panel
+- `/tf-backend`: Legacy Strapi (deprecated, DO NOT USE)
+
