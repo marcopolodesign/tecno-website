@@ -27,7 +27,32 @@
 - Admin credentials: admin@tecnofit.com / Admin123!
 
 ## Project Structure
-- `/website/tecno-website`: Public website
-- `/website/admin`: Admin panel
+- `/website/tecno-website`: Public website (cd tecno-website)
+- `/website/admin`: Admin panel (cd admin)
 - `/tf-backend`: Legacy Strapi (deprecated, DO NOT USE)
+
+## Deployment Workflow
+**IMPORTANT:** This repo is connected to Vercel for automatic deployment.
+
+### To Deploy Changes:
+1. Make your changes in the appropriate directory:
+   - Admin panel: `cd /Users/mataldao/Local/tf-marcopolo/website/admin`
+   - Website: `cd /Users/mataldao/Local/tf-marcopolo/website/tecno-website`
+2. Commit your changes: `git add . && git commit -m "your message"`
+3. Push to GitHub: `git push origin main`
+4. Vercel will automatically deploy (takes ~2-3 minutes)
+
+### DO NOT:
+- ❌ Use `vercel deploy` command
+- ❌ Try to deploy manually
+- ❌ Create deployment scripts
+
+### DO:
+- ✅ Just commit and push to GitHub
+- ✅ Vercel handles deployment automatically
+- ✅ Monitor deployment at https://vercel.com/dashboard
+
+### Deployment URLs:
+- Admin: https://tecno-admin.vercel.app
+- Website: https://somostecnofit.com (or Vercel URL)
 
