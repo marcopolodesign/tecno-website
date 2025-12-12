@@ -56,3 +56,8 @@
 - Admin: https://tecno-admin.vercel.app
 - Website: https://somostecnofit.com (or Vercel URL)
 
+## Supabase Connection
+- Project URL: https://buntxbgjixlksffbscle.supabase.co
+- Dashboard: https://supabase.com/dashboard/project/buntxbgjixlksffbscle
+- To run SQL migrations: Go to SQL Editor in Supabase dashboard
+
