@@ -1,63 +1,80 @@
-# TecnoFit Project Rules
+# Public Website - TecnoFit
 
-## Tech Stack
-- Frontend: React + Vite + Tailwind CSS
-- Backend: Supabase (PostgreSQL + Auth)
-- Animations: GSAP (NOT framer-motion)
-- Admin Panel: React + Supabase
-- Deployment: Vercel
+## 🎯 YOU ARE IN: Public Website Repository
 
-## Always Check
-- Tailwind docs: https://tailwindcss.com/docs/installation/using-vite
-- Use GSAP for animations, never framer-motion
-- Check Figma MCP if design links are provided
+**Git Repository**: `/Users/mataldao/Local/tf-marcopolo/website/tecno-website/.git`
+**Deployment**: https://somostecnofit.com
+**Branch**: main
 
-## Database Schema
-- `prospects`: Website form submissions
-- `leads`: Converted prospects
-- `users`: Active customers/members
-- `sellers`: Staff (front_desk, admin, super_admin) with auth_user_id
-- `coaches`: Trainers with auth_user_id, specializations, certifications
-- `seller_leads`: Assignment tracking
+## 📚 Required Documentation
 
-## Authentication
-- Supabase Auth for sellers and coaches
-- Login checks sellers table first, then coaches table
-- Regular users (customers) are NOT authenticated
-- Admin credentials: admin@tecnofit.com / Admin123!
+**Read these files in parent directory** (`../`):
+1. `../AGENT_GUIDE.md` - Complete project guide
+2. `../GIT_WORKFLOW.md` - Git operations
+3. `../DATABASE_OPERATIONS.md` - Database management
+4. `../QUICK_START.md` - Quick reference
 
-## Project Structure
-- `/website/tecno-website`: Public website (cd tecno-website)
-- `/website/admin`: Admin panel (cd admin)
-- `/tf-backend`: Legacy Strapi (deprecated, DO NOT USE)
+## 🚀 Quick Commands
 
-## Deployment Workflow
-**IMPORTANT:** This repo is connected to Vercel for automatic deployment.
+```bash
+# You are here
+cd /Users/mataldao/Local/tf-marcopolo/website/tecno-website
 
-### To Deploy Changes:
-1. Make your changes in the appropriate directory:
-   - Admin panel: `cd /Users/mataldao/Local/tf-marcopolo/website/admin`
-   - Website: `cd /Users/mataldao/Local/tf-marcopolo/website/tecno-website`
-2. Commit your changes: `git add . && git commit -m "your message"`
-3. Push to GitHub: `git push origin main`
-4. Vercel will automatically deploy (takes ~2-3 minutes)
+# Develop
+npm run dev  # http://localhost:5174
 
-### DO NOT:
-- ❌ Use `vercel deploy` command
-- ❌ Try to deploy manually
-- ❌ Create deployment scripts
+# Deploy
+git add .
+git commit -m "feat: your change"
+git push origin main
+# ✅ Auto-deploys to https://somostecnofit.com
+```
 
-### DO:
-- ✅ Just commit and push to GitHub
-- ✅ Vercel handles deployment automatically
-- ✅ Monitor deployment at https://vercel.com/dashboard
+## ⚠️ Important
 
-### Deployment URLs:
-- Admin: https://tecno-admin.vercel.app
-- Website: https://somostecnofit.com (or Vercel URL)
+- This is a SEPARATE git repository from admin
+- Always verify you're in `/Users/mataldao/Local/tf-marcopolo/website/tecno-website` before git operations
+- Uses ONLY anon key (NO service role key!)
+- No authentication - public website only
+- Form submissions go to Supabase prospects table
 
-## Supabase Connection
-- Project URL: https://buntxbgjixlksffbscle.supabase.co
-- Dashboard: https://supabase.com/dashboard/project/buntxbgjixlksffbscle
-- To run SQL migrations: Go to SQL Editor in Supabase dashboard
+## 🔗 Links
 
+- **Production**: https://somostecnofit.com
+- **Supabase**: https://supabase.com/dashboard/project/buntxbgjixlksffbscle
+- **Vercel**: https://vercel.com/dashboard
+
+## 📝 Environment Variables
+
+```env
+VITE_SUPABASE_URL=https://buntxbgjixlksffbscle.supabase.co
+VITE_SUPABASE_ANON_KEY=[anon key]
+# NO service role key on public website!
+```
+
+## 🎨 Tech Stack
+
+- React + Vite
+- Tailwind CSS
+- GSAP (NOT framer-motion)
+- Supabase client
+
+## 📋 Main Sections
+
+- HeroSection.jsx - Landing hero
+- IntroSection.jsx - Introduction
+- EstacionesSection.jsx - Training stations
+- MethodologySection.jsx - Training methodology
+- TFExperience.jsx - Experience showcase
+- BannerSection.jsx - Call to action
+- MapSection.jsx - Location map
+- ContactSidecart.jsx - Contact form (submits to Supabase)
+
+## 🔐 Security
+
+- Only use anon key (public access)
+- RLS policies allow anonymous INSERT on prospects table
+- No authentication required
+- Form validation on client side
+
+For complete documentation, see `../AGENT_GUIDE.md`

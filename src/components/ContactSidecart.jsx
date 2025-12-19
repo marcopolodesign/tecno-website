@@ -138,6 +138,35 @@ const ContactSidecart = ({ isOpen, onClose }) => {
       setProspectId(newProspectId)
       localStorage.setItem('prospectId', newProspectId)
       console.log('✅ Prospect created:', newProspectId)
+
+      // Log the prospect creation
+      try {
+        await supabase.from('logs').insert([{
+          action_type: 'prospect_created',
+          action_description: `Nuevo prospecto desde formulario web: ${data.firstName || ''} ${data.lastName || ''}`.trim(),
+          performed_by_type: 'system',
+          performed_by_name: 'Sistema Automático',
+          entity_type: 'prospect',
+          entity_id: result.id,
+          entity_name: `${data.firstName || ''} ${data.lastName || ''}`.trim() || data.email,
+          changes: {
+            email: data.email,
+            phone: data.phone,
+            training_goal: data.trainingGoal,
+            utm_source: utmParams.utmSource,
+            utm_medium: utmParams.utmMedium,
+            utm_campaign: utmParams.utmCampaign
+          },
+          metadata: {
+            source: 'website_form',
+            timestamp: new Date().toISOString()
+          }
+        }])
+      } catch (logError) {
+        console.error('Error logging prospect creation:', logError)
+        // Don't throw - logging should never break the main flow
+      }
+
       return newProspectId
     } catch (error) {
       console.error('Error creating prospect:', error)
@@ -210,17 +239,20 @@ const ContactSidecart = ({ isOpen, onClose }) => {
         utm_content: utmParams.utmContent || null
       }
 
-      const { error } = await supabase
+      const { data: result, error } = await supabase
         .from('leads')
         .insert([leadData])
+        .select()
+        .single()
 
       if (error) {
         console.error('Error creating lead:', error)
         return false
       }
 
-      console.log('✅ Lead created')
-      
+      const newLeadId = result.id
+      console.log('✅ Lead created:', newLeadId)
+
       // Update prospect if exists
       if (prospectId) {
         await supabase
@@ -228,12 +260,37 @@ const ContactSidecart = ({ isOpen, onClose }) => {
           .update({ converted_to_lead: true })
           .eq('id', prospectId)
       }
-      
+
+      // Send welcome email (don't wait for it to complete)
+      sendWelcomeEmail(newLeadId).catch(emailError => {
+        console.error('Error sending welcome email:', emailError)
+        // Don't fail the form submission if email fails
+      })
+
       return true
     } catch (error) {
       console.error('Error creating lead:', error)
     }
     return false
+  }
+
+  // Send welcome email using Edge Function
+  const sendWelcomeEmail = async (leadId) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('send-welcome-email', {
+        body: { leadId }
+      })
+
+      if (error) {
+        throw error
+      }
+
+      console.log('✅ Welcome email sent successfully:', data)
+      return data
+    } catch (error) {
+      console.error('Error sending welcome email:', error)
+      throw error
+    }
   }
 
   // Handle email blur (trigger prospect creation or update)
