@@ -507,14 +507,11 @@ const ContactSidecart = ({ isOpen, onClose }) => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                 >
                   <option value="">Selecciona una opción</option>
-                  <option value="perdida-peso">Pérdida de peso</option>
-                  <option value="aumento-masa-muscular">Aumento de masa muscular</option>
-                  <option value="mejora-resistencia">Mejora de resistencia</option>
-                  <option value="tonificacion">Tonificación</option>
-                  <option value="entrenamiento-funcional">Entrenamiento funcional</option>
-                  <option value="preparacion-competencias">Preparación para competencias</option>
-                  <option value="rehabilitacion-fisica">Rehabilitación física</option>
-                  <option value="reduccion-estres">Reducción del estrés</option>
+                  <option value="weight_loss">Pérdida de peso</option>
+                  <option value="muscle_gain">Aumento de masa muscular</option>
+                  <option value="general_fitness">Fitness general / Tonificación</option>
+                  <option value="sports_performance">Rendimiento deportivo</option>
+                  <option value="rehabilitation">Rehabilitación física</option>
                 </select>
               </div>
 
