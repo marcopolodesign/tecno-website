@@ -226,7 +226,7 @@ const ContactSidecart = ({ isOpen, onClose }) => {
         phone: data.phone,
         training_goal: data.trainingGoal,
         notes: data.notes || '',
-        status: 'nuevo',
+        status: 'new',
         submitted_at: new Date().toISOString(),
         converted_to_user: false,
         prospect_id: prospectId || null,
