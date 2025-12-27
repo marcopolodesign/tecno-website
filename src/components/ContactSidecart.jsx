@@ -87,7 +87,7 @@ const ContactSidecart = ({ isOpen, onClose }) => {
     if (savedData) {
       setFormData(JSON.parse(savedData))
     }
-    if (savedProspectId) {
+    if (savedProspectId && savedProspectId !== 'undefined' && savedProspectId !== 'null') {
       setProspectId(savedProspectId)
     }
   }, [])
@@ -229,7 +229,7 @@ const ContactSidecart = ({ isOpen, onClose }) => {
         status: 'new',
         submitted_at: new Date().toISOString(),
         converted_to_user: false,
-        prospect_id: prospectId || null,
+        prospect_id: prospectId ?? null,
         utm_source: utmParams.utmSource || null,
         utm_medium: utmParams.utmMedium || null,
         utm_campaign: utmParams.utmCampaign || null,
